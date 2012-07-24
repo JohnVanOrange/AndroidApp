@@ -1,15 +1,26 @@
-$( function() {
- document.addEventListener("deviceready", onDeviceReady, false);
+$(function() {
+	document.addEventListener("deviceready", onDeviceReady, false);
 });
-// PhoneGap is loaded and it is now safe to make calls PhoneGap methods
 function onDeviceReady() {
- $('#test').html('Success');
- result = call('user/login',{'username':'testaccount','password':'thisisatest'});
+	//force image to screen width
+	$('#main_img').attr('width',window.innerWidth);
+	//Load initial image
+	setImage(newImage());
+	//Load new image on click
+	$('#main_img').click(function() {
+		setImage(newImage());
+	});
 }
 
 function newImage() {
 	image_id = call('image/random');
-	image = call('image/get',{'image':image_id});
+	image = call('image/get',{'image':image_id.response});
+	return image;
+}
+
+function setImage(image) {
+	$('#main_img').attr('src',img_loc+image.filename);
+	$('#main_img').imagefit();
 }
 
 function call(method, opt) {
