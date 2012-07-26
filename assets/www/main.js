@@ -14,6 +14,13 @@ function onDeviceReady() {
 	$('body').click(function() {
 		nextImage();
 	});
+	//Support swiping left and right
+	$('body').swipeleft(function() {
+		nextImage();
+	});
+	$('body').swiperight(function() {
+		prevImage();
+	});
 }
 
 function onBackKeyDown() {
@@ -22,10 +29,7 @@ function onBackKeyDown() {
 
 function nextImage() {
 	image.index++;
-	console.log('imageindex: '+image.index);
-	console.log('imagelen: '+image.store.length);
 	if (image.store.length <= image.index) {
-		console.log('Loading image');
 		newImage();
 	}
 	setImage(image.index);
@@ -42,14 +46,11 @@ function newImage() {
 	image_id = call('image/random');
 	newimage = call('image/get',{'image':image_id.response});
 	image.store.push(newimage);
-	console.log('Image pushed');
 	return newimage;
 }
 
 function setImage(index) {
 	$('#main_img').attr('src',img_loc+image.store[index].filename);
-	console.log('Set image: '+img_loc+image.store[index].filename);
-	//$('#main_img').imagefit();
 }
 
 function call(method, opt) {
