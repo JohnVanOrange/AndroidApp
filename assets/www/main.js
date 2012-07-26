@@ -2,24 +2,53 @@ $(function() {
 	document.addEventListener("deviceready", onDeviceReady, false);
 });
 function onDeviceReady() {
+	document.addEventListener("backbutton", onBackKeyDown, false);
+	
 	//force image to screen width
 	$('#main_img').attr('width',window.innerWidth);
+	
 	//Load initial image
-	setImage(newImage());
+	nextImage();
+	
 	//Load new image on click
 	$('#main_img').click(function() {
-		setImage(newImage());
+		nextImage();
 	});
+}
+
+function onBackKeyDown() {
+	prevImage();
+}
+
+function nextImage() {
+	image.index++;
+	console.log('imageindex: '+image.index);
+	console.log('imagelen: '+image.store.length);
+	if (image.store.length <= image.index) {
+		console.log('Loading image');
+		newImage();
+	}
+	setImage(image.index);
+}
+
+function prevImage() {
+	if (image.index > 0) {
+		image.index--;
+	}
+	setImage(image.index);
 }
 
 function newImage() {
 	image_id = call('image/random');
-	image = call('image/get',{'image':image_id.response});
-	return image;
+	newimage = call('image/get',{'image':image_id.response});
+	image.store.push(newimage);
+	console.log('Image pushed');
+	return newimage;
 }
 
-function setImage(image) {
-	$('#main_img').attr('src',img_loc+image.filename);
+function setImage(index) {
+	$('#main_img').attr('src',img_loc+image.store[index].filename);
+	console.log('Set image: '+img_loc+image.store[index].filename);
 	$('#main_img').imagefit();
 }
 
@@ -35,6 +64,11 @@ function call(method, opt) {
 		exception_handler(e);
 	}
 }
+
+image = {
+	index : -1,
+	store : new Array()
+};
 
 api = {
 	client : function (method, opt) {
