@@ -2,13 +2,23 @@ $(function() {
 	document.addEventListener("deviceready", onDeviceReady, false);
 });
 function onDeviceReady() {
-	document.addEventListener("backbutton", onBackKeyDown, false);
+	$.support.cors = true;
+    $.mobile.allowCrossDomainPages = true;
+    $.mobile.changePage.defaults.changeHash = false;
+    $.mobile.pushStateEnabled = false;
+    $.mobile.hashListeningEnabled = false;
+	
+    document.addEventListener("backbutton", onBackKeyDown, false);
 	
 	//force image to screen width
-	$('#main_img').attr('width',window.innerWidth);
+	$('body').live('pagebeforeshow', function() {
+		$('.main_image').attr('width',window.innerWidth);
+	});
 
 	//Load initial image
 	nextImage();
+	//Load another image
+	newImage();
 	
 	//Load new image on click
 	$('body').click(function() {
@@ -32,25 +42,29 @@ function nextImage() {
 	if (image.store.length <= image.index) {
 		newImage();
 	}
-	setImage(image.index);
+	setImage(image.index,'next');
 }
 
 function prevImage() {
 	if (image.index > 0) {
 		image.index--;
 	}
-	setImage(image.index);
+	setImage(image.index,'prev');
 }
 
 function newImage() {
-	image_id = call('image/random');
-	newimage = call('image/get',{'image':image_id.response});
-	image.store.push(newimage);
-	return newimage;
+	var image_id = call('image/random');
+	$.mobile.loadPage(image_id.response, { showLoadMsg: false } );
+	image.store.push(image_id.response);
+	return image_id.response;
 }
 
-function setImage(index) {
-	$('#main_img').attr('src',img_loc+image.store[index].filename);
+function setImage(index, direction) {
+	reverse = false;
+	if (direction == 'prev') {
+		reverse = true;
+	}
+	$.mobile.changePage(img_loc + image.store[index],{'transition': 'slide', 'reverse': reverse} );
 }
 
 function call(method, opt) {

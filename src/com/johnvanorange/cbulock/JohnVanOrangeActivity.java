@@ -17,6 +17,7 @@ public class JohnVanOrangeActivity extends DroidGap {
         appView.addJavascriptInterface(toast, "MyToast");
     	this.appView.getSettings().setUseWideViewPort(true);
     	this.appView.getSettings().setLoadWithOverviewMode(true);
+    	super.setIntegerProperty("loadUrlTimeoutValue", 60000);
         super.loadUrl("file:///android_asset/www/index.html");
         WebSettings ws = super.appView.getSettings();
         ws.setSupportZoom(true);
