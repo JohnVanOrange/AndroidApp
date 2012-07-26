@@ -6,12 +6,12 @@ function onDeviceReady() {
 	
 	//force image to screen width
 	$('#main_img').attr('width',window.innerWidth);
-	
+
 	//Load initial image
 	nextImage();
 	
 	//Load new image on click
-	$('#main_img').click(function() {
+	$('body').click(function() {
 		nextImage();
 	});
 }
@@ -49,7 +49,7 @@ function newImage() {
 function setImage(index) {
 	$('#main_img').attr('src',img_loc+image.store[index].filename);
 	console.log('Set image: '+img_loc+image.store[index].filename);
-	$('#main_img').imagefit();
+	//$('#main_img').imagefit();
 }
 
 function call(method, opt) {

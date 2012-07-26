@@ -3,6 +3,8 @@ package com.johnvanorange.cbulock;
 import android.app.Activity;
 import android.os.Bundle;
 import org.apache.cordova.*;
+import android.webkit.WebSettings;
+
 
 public class JohnVanOrangeActivity extends DroidGap {
 	private MyToaster toast;
@@ -12,7 +14,12 @@ public class JohnVanOrangeActivity extends DroidGap {
         super.onCreate(savedInstanceState);
         super.init();
         toast = new MyToaster(this, appView);
-        appView.addJavascriptInterface(toast, "MyToast"); 
+        appView.addJavascriptInterface(toast, "MyToast");
+    	this.appView.getSettings().setUseWideViewPort(true);
+    	this.appView.getSettings().setLoadWithOverviewMode(true);
         super.loadUrl("file:///android_asset/www/index.html");
+        WebSettings ws = super.appView.getSettings();
+        ws.setSupportZoom(true);
+        ws.setBuiltInZoomControls(true);
     }
 }
