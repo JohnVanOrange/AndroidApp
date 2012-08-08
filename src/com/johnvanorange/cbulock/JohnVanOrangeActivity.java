@@ -15,11 +15,11 @@ public class JohnVanOrangeActivity extends DroidGap {
         super.init();
         toast = new MyToaster(this, appView);
         appView.addJavascriptInterface(toast, "MyToast");
-    	this.appView.getSettings().setUseWideViewPort(true);
-    	this.appView.getSettings().setLoadWithOverviewMode(true);
+    	//this.appView.getSettings().setUseWideViewPort(true);
+    	//this.appView.getSettings().setLoadWithOverviewMode(true);
     	super.setIntegerProperty("loadUrlTimeoutValue", 60000);
     	super.setIntegerProperty("splashscreen", R.drawable.splash);
-        super.loadUrl("file:///android_asset/www/index.html",2000);
+        super.loadUrl("file:///android_asset/www/index.html",1500);
         WebSettings ws = super.appView.getSettings();
         ws.setSupportZoom(true);
         ws.setBuiltInZoomControls(true);

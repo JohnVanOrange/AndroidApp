@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.johnvanorange.cbulock"
-    android:versionCode="3"
-    android:versionName="1.02" >
+    android:versionCode="5"
+    android:versionName="1.04" >
 
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="16" />
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="10" />
     
     <supports-screens 
     android:largeScreens="true" 
@@ -22,7 +22,7 @@
         <activity
             android:name=".JohnVanOrangeActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
+            android:screenOrientation="unspecified"
             android:configChanges="keyboardHidden|orientation|screenLayout" > 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

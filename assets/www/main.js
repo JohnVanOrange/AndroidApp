@@ -2,23 +2,47 @@ $(function() {
 	document.addEventListener("deviceready", onDeviceReady, false);
 });
 function onDeviceReady() {
+	
+	
 	$.support.cors = true;
     $.mobile.allowCrossDomainPages = true;
     $.mobile.changePage.defaults.changeHash = false;
     $.mobile.pushStateEnabled = false;
     $.mobile.hashListeningEnabled = false;
+    
+    
+    $.event.special.swipe.durationThreshold = 700;
+    $.event.special.swipe.horizontalDistanceThreshold = 200;
+    $.event.special.swipe.verticalDistanceThreshold = 50;
 	
-    document.addEventListener("backbutton", onBackKeyDown, false);
+    document.addEventListener("backbutton", function(){
+    	prevImage();
+    });
+    
+    /* Will enable menu functionality at a later point
+    document.addEventListener('menubutton', function(){
+    	$.mobile.changePage($("#menu"),'pop', true, true);
+    });
+    */
 	
 	//force image to screen width
 	$('body').live('pagebeforeshow', function() {
 		$('.main_image').attr('width',window.innerWidth);
 	});
+	
+	/*
+	$(window).bind( 'orientationchange', function(event){
+		if (event.orientation == 'portrait') {
+			$('.main_image').attr('width',window.innerHeight);
+		}
+		else {
+			$('.main_image').attr('width',window.innerWidth);
+		}
+	});
+	*/
 
-	//Load initial image
-	nextImage();
-	//Load another image
-	newImage();
+	//Load three images at first
+	nextImage(); newImage(); newImage();
 	
 	//Load new image on click
 	$('body').click(function() {
@@ -33,13 +57,9 @@ function onDeviceReady() {
 	});
 }
 
-function onBackKeyDown() {
-	prevImage();
-}
-
 function nextImage() {
 	image.index++;
-	if (image.store.length <= image.index) {
+	if (image.store.length <= (image.index + 2)) {
 		newImage();
 	}
 	setImage(image.index,'next');
@@ -64,6 +84,7 @@ function setImage(index, direction) {
 	if (direction == 'prev') {
 		reverse = true;
 	}
+	
 	$.mobile.changePage(img_loc + image.store[index],{'transition': 'slide', 'reverse': reverse} );
 }
 
