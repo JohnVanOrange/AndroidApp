@@ -1,8 +1,8 @@
 package com.johnvanorange.cbulock;
 
 import org.apache.cordova.*; 
-import android.content.Context; 
-import android.view.inputmethod.InputMethodManager; 
+/*import android.content.Context; 
+import android.view.inputmethod.InputMethodManager;*/ 
 import android.webkit.WebView; 
 import android.widget.Toast; 
 
@@ -13,7 +13,7 @@ public class MyToaster
 
         public MyToaster(DroidGap gap, WebView view) 
         { 
-                mAppView = view; 
+        		mAppView = view; 
                 mGap = gap; 
         } 
 

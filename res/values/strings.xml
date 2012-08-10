@@ -2,5 +2,6 @@
 <resources>
 
     <string name="app_name">John VanOrange</string>
+    <string name="version_name">1.04</string>
 
 </resources>

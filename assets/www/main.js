@@ -74,9 +74,9 @@ function prevImage() {
 
 function newImage() {
 	var image_id = call('image/random');
-	$.mobile.loadPage(image_id.response, { showLoadMsg: false } );
-	image.store.push(image_id.response);
-	return image_id.response;
+	$.mobile.loadPage(image_id.uid, { showLoadMsg: false } );
+	image.store.push(image_id.uid);
+	return image_id.uid;
 }
 
 function setImage(index, direction) {
