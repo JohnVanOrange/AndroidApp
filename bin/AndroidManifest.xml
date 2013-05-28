@@ -1,29 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.johnvanorange.cbulock"
-    android:versionCode="5"
-    android:versionName="@string/version_name" >
+<!--
+       Licensed to the Apache Software Foundation (ASF) under one
+       or more contributor license agreements.  See the NOTICE file
+       distributed with this work for additional information
+       regarding copyright ownership.  The ASF licenses this file
+       to you under the Apache License, Version 2.0 (the
+       "License"); you may not use this file except in compliance
+       with the License.  You may obtain a copy of the License at
 
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="10" />
-    
-    <supports-screens 
-    android:largeScreens="true" 
-    android:normalScreens="true" 
-    android:smallScreens="true" 
-    android:resizeable="true" 
-    android:anyDensity="true" />
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
+         http://www.apache.org/licenses/LICENSE-2.0
 
-    <application
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        >
-        <activity
-            android:name=".JohnVanOrangeActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="unspecified"
-            android:configChanges="keyboardHidden|orientation|screenLayout" > 
+       Unless required by applicable law or agreed to in writing,
+       software distributed under the License is distributed on an
+       "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+       KIND, either express or implied.  See the License for the
+       specific language governing permissions and limitations
+       under the License.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:windowSoftInputMode="adjustPan"
+      package="com.johnvanorange.cbulock" android:versionName="@string/version_name" android:versionCode="7">
+    <supports-screens
+        android:xlargeScreens="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:resizeable="true"
+        android:anyDensity="true"
+        />
+    <uses-permission android:name="android.permission.INTERNET" />   
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+    <application android:icon="@drawable/ic_launcher" android:label="@string/app_name"
+        android:debuggable="true">
+        <activity android:name="JohnVanOrange" android:label="@string/app_name"
+                android:theme="@android:style/Theme.Black.NoTitleBar"
+                android:configChanges="orientation|keyboardHidden|keyboard|screenSize"
+               >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -31,4 +44,5 @@
         </activity>
     </application>
 
-</manifest>
+    <uses-sdk android:minSdkVersion="13" android:targetSdkVersion="17"/>
+</manifest> 
