@@ -41,8 +41,4 @@ public class Toast extends CordovaPlugin {
 				android.widget.Toast.LENGTH_SHORT).show();
 	}
 
-	private void logger(String message) {
-		Log.d("PLUG", message);
-	}
-
 }

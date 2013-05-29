@@ -36,6 +36,8 @@
     <preference name="exit-on-suspend" value="false" />
 <plugins>
     <plugin name="App" value="org.apache.cordova.App"/>
+    <plugin name="Device" value="org.apache.cordova.Device"/>
+    <plugin name="Accelerometer" value="org.apache.cordova.AccelListener"/>
     <plugin name="File" value="org.apache.cordova.FileUtils"/>
     <plugin name="NetworkStatus" value="org.apache.cordova.NetworkManager"/>
     <plugin name="Notification" value="org.apache.cordova.Notification"/>
