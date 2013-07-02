@@ -18,7 +18,7 @@
        under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:windowSoftInputMode="adjustPan"
-      package="com.moreskin.cbulock" android:versionName="2.051" android:versionCode="12">
+      package="com.moreskin.cbulock" android:versionName="2.06" android:versionCode="13">
     <supports-screens
         android:xlargeScreens="true"
         android:largeScreens="true"
