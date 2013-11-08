@@ -41,8 +41,11 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />
             </intent-filter>
         </activity>
+        <uses-library android:required="l android:name="com.sec.android.app.multiwindow"> </uses-library>
+        <meta-data android:name="com.sec.android.support.multiwindow" android:value="true" />
     </application>
 
     
